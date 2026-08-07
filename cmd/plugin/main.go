@@ -23,29 +23,29 @@ func run(stdout, stderr io.Writer, getenv func(string) string) int {
 
 	cfg, err := plugin.LoadConfig(getenv)
 	if err != nil {
-		fmt.Fprintln(stderr, "publisher-crates:", err)
+		_, _ = fmt.Fprintln(stderr, "publisher-crates:", err)
 		return 1
 	}
 
 	if err := plugin.Publish(context.Background(), cfg, plugin.ExecRunner{}, stdout, stderr); err != nil {
-		fmt.Fprintln(stderr, "publisher-crates:", err)
+		_, _ = fmt.Fprintln(stderr, "publisher-crates:", err)
 		return 1
 	}
 
 	if cfg.DryRun {
 		if len(cfg.Packages) == 0 {
-			fmt.Fprintln(stdout, "publisher-crates: dry-run validation completed")
+			_, _ = fmt.Fprintln(stdout, "publisher-crates: dry-run validation completed")
 			return 0
 		}
-		fmt.Fprintf(stdout, "publisher-crates: dry-run validation completed for %d package(s)\n", len(cfg.Packages))
+		_, _ = fmt.Fprintf(stdout, "publisher-crates: dry-run validation completed for %d package(s)\n", len(cfg.Packages))
 		return 0
 	}
 
 	if len(cfg.Packages) == 0 {
-		fmt.Fprintln(stdout, "publisher-crates: published crate")
+		_, _ = fmt.Fprintln(stdout, "publisher-crates: published crate")
 		return 0
 	}
 
-	fmt.Fprintf(stdout, "publisher-crates: published %d package(s)\n", len(cfg.Packages))
+	_, _ = fmt.Fprintf(stdout, "publisher-crates: published %d package(s)\n", len(cfg.Packages))
 	return 0
 }
