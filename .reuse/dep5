@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: publisher-crates
-Upstream-Contact: The publisher-crates Authors <https://github.com/SemRels/publisher-crates>
+Upstream-Contact: The semrel Authors <https://github.com/SemRels/publisher-crates>
 Source: https://github.com/SemRels/publisher-crates
 
 # ----------------------------------------------------------------------------
@@ -8,24 +8,27 @@ Source: https://github.com/SemRels/publisher-crates
 # ----------------------------------------------------------------------------
 Files: *.md
  .github/**/*.md
-Copyright: 2026 The publisher-crates Authors
+Copyright: 2026 The semrel Authors
 License: Apache-2.0
 
 # ----------------------------------------------------------------------------
 # Build and tooling configuration
 # ----------------------------------------------------------------------------
-Files: Makefile
+Files: Taskfile.yml
+ Taskfile.yaml
  Dockerfile
  go.mod
  go.sum
  .golangci.yml
- .gitignore
+ .gitignore .pre-commit-config.yaml
+ .github/renovate.json
  .github/**/*.yml
  .github/**/*.yaml
  .reuse/dep5
+ commitlint.config.js
  cmd/**/*.go
  internal/**/*.go
-Copyright: 2026 The publisher-crates Authors
+Copyright: 2026 The semrel Authors
 License: Apache-2.0
 
 # ----------------------------------------------------------------------------
@@ -33,5 +36,5 @@ License: Apache-2.0
 # ----------------------------------------------------------------------------
 Files: LICENSE
  LICENSES/Apache-2.0.txt
-Copyright: 2026 The publisher-crates Authors
+Copyright: 2026 The semrel Authors
 License: Apache-2.0
