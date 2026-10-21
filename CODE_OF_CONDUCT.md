@@ -1,6 +1,6 @@
 # Code of Conduct
 
-publisher-crates is committed to providing a welcoming and harassment-free community.
+`publisher-crates` is committed to providing a welcoming and harassment-free community.
 
 ## Our Pledge
 
