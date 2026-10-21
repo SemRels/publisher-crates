@@ -1,9 +1,10 @@
 # publisher-crates
 
+[![Latest Release](https://img.shields.io/github/v/release/SemRels/publisher-crates?label=version&color=blue)](https://github.com/SemRels/publisher-crates/releases/latest)
 [![CI](https://github.com/SemRels/publisher-crates/actions/workflows/ci.yml/badge.svg)](https://github.com/SemRels/publisher-crates/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/SemRels/publisher-crates)](LICENSE)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/SemRels/publisher-crates/badge)](https://scorecard.dev/viewer/?uri=github.com/SemRels/publisher-crates)
-[![Latest Release](https://img.shields.io/github/v/release/SemRels/publisher-crates?label=version&color=blue)](https://github.com/SemRels/publisher-crates/releases/latest)
+[![REUSE status](https://api.reuse.software/badge/github.com/SemRels/publisher-crates)](https://api.reuse.software/info/github.com/SemRels/publisher-crates)
 
 Publishes Rust crates to crates.io by running `cargo publish` after semrel has already decided and applied the next release version.
 
