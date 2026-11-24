@@ -47,9 +47,10 @@ type ExecRunner struct{}
 
 // LoadConfig parses environment variables and validates required settings.
 func LoadConfig(getenv func(string) string) (Config, error) {
+	dryRunValue := strings.TrimSpace(getenv("SEMREL_DRY_RUN"))
 	cfg := Config{
 		Version:      strings.TrimPrefix(strings.TrimSpace(firstNonEmpty(getenv("SEMREL_VERSION"), getenv("SEMREL_NEXT_VERSION"))), "v"),
-		DryRun:       strings.EqualFold(strings.TrimSpace(getenv("SEMREL_DRY_RUN")), "true"),
+		DryRun:       strings.EqualFold(dryRunValue, "true") || dryRunValue == "1",
 		Token:        strings.TrimSpace(firstNonEmpty(getenv("SEMREL_PLUGIN_CARGO_REGISTRY_TOKEN"), getenv(cargoTokenEnv))),
 		ManifestPath: strings.TrimSpace(getenv("SEMREL_PLUGIN_CARGO_MANIFEST_PATH")),
 		Packages: mergePackageLists(

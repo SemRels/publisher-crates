@@ -81,6 +81,24 @@ func TestRunDryRunWithCredentials(t *testing.T) {
 	require.NotContains(t, stderr.String(), "secret-token")
 }
 
+func TestNumericDryRunDoesNotPublish(t *testing.T) {
+	t.Parallel()
+
+	var stdout, stderr bytes.Buffer
+	runner := &stubRunner{}
+	code := runWithRunner(&stdout, &stderr, func(key string) string {
+		values := map[string]string{
+			"SEMREL_VERSION":       "1.2.3",
+			"SEMREL_DRY_RUN":       "1",
+			"CARGO_REGISTRY_TOKEN": "test-token",
+		}
+		return values[key]
+	}, runner)
+	require.Equal(t, 0, code, stderr.String())
+	require.Zero(t, runner.called, "dry-run executed cargo publish")
+	require.Contains(t, stdout.String(), "dry-run")
+}
+
 func TestRunRequiresCredentialsOutsideDryRun(t *testing.T) {
 	t.Parallel()
 
